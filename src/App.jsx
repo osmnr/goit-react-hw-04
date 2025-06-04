@@ -1,14 +1,19 @@
 import SearchBar from './components/SearchBar/SearchBar'
 import ImageGallery from './components/ImageGallery/ImageGallery'
-import fetchImages from './unsplash_api'
 
+import { useState } from 'react'
 
 function App() {
-  fetchImages("test",1);
+
+  const [images, setImages] = useState([]);
+  const updateImages = (newData)=> {
+    setImages(newData);
+  }
 
   return (
     <>
-    <SearchBar/>
+    <SearchBar updateImages={updateImages} />
+    <ImageGallery images={images} />
     </>
   )
 }
