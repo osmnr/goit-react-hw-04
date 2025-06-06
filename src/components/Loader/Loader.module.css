@@ -1,0 +1,7 @@
+.loaderContainer{
+    padding:20px;
+    display: flex;    
+}
+.loaderInnerDiv{
+    margin:auto;
+}

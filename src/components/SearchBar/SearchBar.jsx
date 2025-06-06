@@ -1,15 +1,27 @@
 import css from './SearchBar.module.css'
 import fetchImages from '../../unsplash_api';
+import toast from 'react-hot-toast';
 
-const SearchBar = ({updateImages}) => {
+
+const SearchBar = ({updateIsLoading, updateImages}) => {
   
 const handleSubmit = async (event)=> {
   event.preventDefault();
   const searchKeyword = event.target.input.value;
-  console.log("submit worked, keyword: ", searchKeyword);
-  const imagesData = await fetchImages(searchKeyword, 1);
-  updateImages(imagesData);
-  console.log("imagesData:",imagesData);
+  
+  try {
+    updateIsLoading(true);
+    const imagesData = await fetchImages(searchKeyword, 1);
+    if(imagesData.length < 1){
+      toast.error("No results found");
+    }
+    updateImages(imagesData);    
+  } catch (error) {
+    toast.error("An error occured:", error);
+  }
+  finally{
+    updateIsLoading(false);
+  }
 }
 
 

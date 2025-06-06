@@ -3,8 +3,16 @@ header {
     text-align: center;
 }
 
+button {
+    border-radius: 3px;
+    font-size: 22px;
+    border:none;
+}
 .searchFormInput {
+    width:300px;
     margin-right: 10px;
     border-radius: 3px;
+    font-size: 22px;
+    border:none;
 }
 
