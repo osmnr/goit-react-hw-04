@@ -8,22 +8,32 @@ const SearchBar = ({updateIsLoading, updateImages}) => {
 const handleSubmit = async (event)=> {
   event.preventDefault();
   const searchKeyword = event.target.input.value;
-  
+
+  if (searchKeyword.length < 3){
+    toast.error("Please enter at least 3 letters to search");
+    return;
+  }
+
   try {
     updateIsLoading(true);
     const imagesData = await fetchImages(searchKeyword, 1);
+
     if(imagesData.length < 1){
       toast.error("No results found");
     }
+    
     updateImages(imagesData);    
-  } catch (error) {
+  }
+
+  catch (error) {
     toast.error("An error occured:", error);
   }
+
   finally{
     updateIsLoading(false);
   }
-}
 
+}
 
   return (
     <header>

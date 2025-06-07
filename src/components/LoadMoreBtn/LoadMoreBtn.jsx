@@ -1,6 +1,11 @@
+import css from './LoadMoreBtn.module.css'
 
 const LoadMoreBtn = () => {
-  return (<button>Load More</button>);
+  return (
+    <div className={css.LoadMoreButtonContainer}>
+      <button>Load More</button>
+    </div>
+);
 };
 
 export default LoadMoreBtn;
