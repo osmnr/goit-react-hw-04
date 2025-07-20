@@ -3,17 +3,17 @@ import ImageCard from '../ImageCard/ImageCard';
 
 
 
-const ImageGallery = ({images}) => {
+const ImageGallery = ({images, onImageClick }) => {
 
   
   return (
     <div className={css.ulContainer}>
     <ul >
-      {images.map(({ id, alt_description, urls }) => (
-        <li key={id}>
-          <ImageCard id={id} alt_description={alt_description} smallUrl={urls.small} />
+      {images.map( (image) => (
+        <li key={image.id} onClick={() => onImageClick(image)}>
+          <ImageCard id={image.id} alt_description={image.alt_description} smallUrl={image.urls.small} />
         </li>
-      ))}
+      ) )}
     </ul>
     </div>
 );

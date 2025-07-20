@@ -1,6 +1,8 @@
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
-const ErrorMessage = () => {
+const ErrorMessage = ({error}) => {
+  const notify = () => toast.error(error);
+
   return (
     <Toaster position="top-right"/>
   );
